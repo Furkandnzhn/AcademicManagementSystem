@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AcademicManagementSystem.Models.LessonNoteModel>
+@{
+    ViewData["Title"] = "ViewNotes";
+    Layout = "~/Views/_StudentLayout.cshtml";
+}
+
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"> Student /</span> View Notes</h4>
+<div class="card">
+                <h5 class="card-header">Notes</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Lesson</th>
+                        <th>Teacher</th>
+                        <th>Midterm Note</th>
+                        <th>Final Note</th>
+                        <th>Average</th>
+                        <th>Complete Note</th>
+                        <th>Letter Grade</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                @foreach(var l in Model)
+                {
+                    <tr>
+                             <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@l.LessonName</strong></td>
+                             <td>@l.TeacherName</td>
+                                 <td><span class="badge bg-secondary"> @l.MidtermNote </span></td>
+                                     <td><span class="badge bg-secondary"> @l.FinalNote </span></td>
+                                     <td><span class="badge bg-secondary"> @l.Average </span></td>
+                                     <td><span class="badge bg-secondary"> @l.CompleteNote </span></td>
+                             <td>
+                            @if (l.LetterGrade == "AA" || l.LetterGrade == "BA"
+                          || l.LetterGrade == "BB" || l.LetterGrade == "CB" || l.LetterGrade == "CC")
+                            {
+                                <span class="badge bg-success">@l.LetterGrade</span>
+                            }
+                            else if(l.LetterGrade == null)
+                            {
+                                
+                            }
+                            else
+                            {
+                               <span class="badge bg-danger">@l.LetterGrade</span>
+                            }
+
+                                 </td>
+                    </tr>
+                }
+
+                     
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
